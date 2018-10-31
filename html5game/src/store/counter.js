@@ -1,4 +1,6 @@
 import {INCREMENT_COUNTER, DECREMENT_COUNTER, GET_COUNTER} from './mutation-type'
+import Vue from 'vue';
+import axios from 'axios';
 
 const counter = {
   namespaced: true,
@@ -8,6 +10,11 @@ const counter = {
 
   actions: {
     [INCREMENT_COUNTER] ({commit, state, rootState}) {
+      axios.get("test").then((response) => {
+        console.log("###########");
+        console.log(response.data);
+      },(response) => {
+      });
       commit(INCREMENT_COUNTER, {})
     },
     [DECREMENT_COUNTER] ({commit, state, rootState}) {

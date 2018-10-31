@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import counter from './counter'
+import itemBoard from './item-board'
 
 import vuexI18n from 'vuex-i18n';
 
@@ -11,11 +12,12 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   modules :{
     'counter': counter,
+    'item-board': itemBoard,
   }
 })
 
 const config = {
-	moduleName: 'myName',
+	moduleName: 'trans',
 	translateFilterName: 't'
 }
 

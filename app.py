@@ -10,6 +10,10 @@ app = Bottle()
 def index_html():
     return template("index")
 
+@app.route('/test')
+def test():
+    return "a"
+
 
 @app.route("/statics/<filepath:path>")
 def statics(filepath):
