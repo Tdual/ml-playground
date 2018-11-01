@@ -7,7 +7,7 @@
         tag="article"
         style="max-width: 15rem;">
       <p class="card-text">{{item.description}}</p>
-      <b-button href="#" variant="primary">Go somewhere</b-button>
+      <b-button href="#" variant="primary"><router-link :to="'/games/'+item.id" style="color:white;">PLAY!</router-link></b-button>
     </b-card>
   </div>
 </template>

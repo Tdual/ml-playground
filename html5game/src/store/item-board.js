@@ -1,4 +1,4 @@
-import {INCREMENT_COUNTER, DECREMENT_COUNTER, GET_GAME_ITEMS} from './mutation-type'
+import {GET_GAME_ITEMS, SET_GAME_ITEMS} from './mutation-type'
 import Vue from 'vue';
 import axios from 'axios';
 
@@ -6,37 +6,40 @@ const itemBoard = {
   namespaced: true,
   state: {
     items: [
-      {id:1, title:'HAPPY GLASS', description: 'Description', imgURL: 'https://s3-ap-northeast-1.amazonaws.com/ml-html5game/game_thumbnail/unnamed.png'},
-      {id:2, title:'グラディウス', description: 'Description', imgURL: 'https://s3-ap-northeast-1.amazonaws.com/ml-html5game/game_thumbnail/Gradius.jpg'},
-      {id:3,title:'slither.io', description: 'Description', imgURL: 'https://picsum.photos/600/300/?image=25'},
-      {id:4,title:'Title', description: 'Description', imgURL: 'https://picsum.photos/600/300/?image=25'},
-      {id:5,title:'Title', description: 'Description', imgURL: 'https://picsum.photos/600/300/?image=25'},
-      {id:6,title:'Title', description: 'Description', imgURL: 'https://picsum.photos/600/300/?image=25'},
-      {id:7,title:'Title', description: 'Description', imgURL: 'https://picsum.photos/600/300/?image=25'},
+      {
+              "id": 1,
+              "title": "HAPPY GLASS",
+              "description": "Description",
+              "bodyURL": "https://html5.gamedistribution.com/7a89fa5298ae4c248da2c0c006eca1fa/",
+              "imgURL": "https://s3-ap-northeast-1.amazonaws.com/ml-html5game/game_thumbnail/unnamed.png"
+      },
+      {
+              "id": 2,
+              "title": "グラディウス",
+              "description": "Description",
+              "bodyURL": "http://appsweets.net/gradius/index.html",
+              "imgURL": "https://s3-ap-northeast-1.amazonaws.com/ml-html5game/game_thumbnail/Gradius.png"
+      }
     ]
   },
 
   actions: {
-    [INCREMENT_COUNTER] ({commit, state, rootState}) {
-      axios.get("test").then((response) => {
-        console.log("###########");
+    [GET_GAME_ITEMS] ({commit, state, rootState}) {
+      axios.get("items").then((response) => {
         console.log(response.data);
+        const res = response.data;
+        commit(SET_GAME_ITEMS, res)
       },(response) => {
+        console.log("error");
+        console.log(response);
       });
-      commit(INCREMENT_COUNTER, {})
-    },
-    [DECREMENT_COUNTER] ({commit, state, rootState}) {
-      commit(DECREMENT_COUNTER, {})
     }
   },
 
   mutations:{
-    [INCREMENT_COUNTER] (state, payload) {
-      state.counter_value += 1
+    [SET_GAME_ITEMS] (state, payload) {
+      state.items = payload.list;
     },
-    [DECREMENT_COUNTER] (state, payload) {
-      state.counter_value -= 1
-    }
   },
 
   getters:{

@@ -12,7 +12,30 @@ def index_html():
 
 @app.route('/test')
 def test():
-    return "a"
+    return {"test": "test"}
+
+@app.route("/items")
+def get_item_list():
+    res = {
+        "list": [
+            {
+                "id": 1,
+                "title": "HAPPY GLASS",
+                "description": "Description",
+                "bodyURL": "https://html5.gamedistribution.com/7a89fa5298ae4c248da2c0c006eca1fa/",
+                "imgURL": "https://s3-ap-northeast-1.amazonaws.com/ml-html5game/game_thumbnail/unnamed.png"
+            },
+            {
+                "id": 2,
+                "title": "グラディウス",
+                "description": "Description",
+                "bodyURL": "http://appsweets.net/gradius/index.html",
+                "imgURL": "https://s3-ap-northeast-1.amazonaws.com/ml-html5game/game_thumbnail/Gradius.png"
+            }
+        ]
+    }
+    res["total"] = len(res["list"])
+    return res
 
 
 @app.route("/statics/<filepath:path>")

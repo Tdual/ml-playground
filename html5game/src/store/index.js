@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import counter from './counter'
 import itemBoard from './item-board'
+import itemDetail from './item-detail'
 
 import vuexI18n from 'vuex-i18n';
 
@@ -13,6 +14,7 @@ const store = new Vuex.Store({
   modules :{
     'counter': counter,
     'item-board': itemBoard,
+    'item-detail': itemDetail,
   }
 })
 

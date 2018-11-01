@@ -1,6 +1,5 @@
 <template>
   <div class="pick-up-items">
-    <center>
     <b-carousel id="carousel1"
                 style="text-shadow: 1px 1px 2px #333;"
                 controls
@@ -14,13 +13,12 @@
                 @sliding-end="onSlideEnd"
     >
 
-      <b-carousel-slide v-for="item in items" :key="item.id" :img-src="item.imgURL">
+      <b-carousel-slide v-for="item in items" :key="item.id" :img-src="item.imgURL" img-width="512" img-height="240">
         <h1>{{item.title}}</h1>
-        <b-button>Play!</b-button>
+        <b-button href="#" variant="primary"><router-link :to="'/games/'+item.id" style="color:white;">PLAY!</router-link></b-button>
       </b-carousel-slide>
 
     </b-carousel>
-    </center>
   </div>
 </template>
 
@@ -46,10 +44,9 @@ export default {
 
 <style scoped>
 .pick-up-items{
-  align-content: center;
   margin: 20px;
-  width: 50%;
-  height: 50%;
+  width: 80%;
+  height: 80%;
 }
 
 </style>
